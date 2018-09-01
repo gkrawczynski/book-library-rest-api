@@ -1,6 +1,8 @@
 package pl.coderslab.models;
 
 public class Book {
+
+    private static long FIRST_ID_AVAILABLE = 4L;
     private long id;
     private String isbn;
     private String title;
@@ -8,7 +10,12 @@ public class Book {
     private String publisher;
     private String type;
 
+    public static long getFIRST_ID_AVAILABLE() {
+        return FIRST_ID_AVAILABLE++;
+    }
+
     public Book() {
+        this.id = getId();
     }
 
     public Book(long id, String isbn, String title, String author, String publisher, String type) {

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @Service
@@ -19,6 +20,7 @@ public class MemoryBookService {
     }
 
     public List<Book> getList() {
+
         return list;
     }
 
@@ -45,25 +47,22 @@ public class MemoryBookService {
 
     public void addBook(String isbn, String title, String author, String publisher, String type){
         Book book = new Book();
-//        book.setId(getById());
+        book.setId(Book.getFIRST_ID_AVAILABLE());
         book.setIsbn(isbn);
         book.setTitle(title);
         book.setAuthor(author);
         book.setPublisher(publisher);
         book.setType(type);
 
-        System.out.println("Book added to books' list: " + book.toString());
+        System.out.println("Book added to books library: " + book.toString());
         this.list.add(book);
     }
 
+    public void delBook(long id){
+        List<Book> delBook = getList().stream()
+                .filter(d -> d.getId() != id)
+                .collect(Collectors.toList());
+        this.list = delBook;
+    }
+
 }
-
-/*
-    public void delBook(long id) {
-        List<Book> collect = getBookList().stream().filter(s -> s.getId() != id).collect(Collectors.toList());
-        this.bookList = collect;
-}
-
-
-
-* */
