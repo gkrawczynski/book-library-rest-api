@@ -39,5 +39,15 @@ public class BookController {
     public void delBook(@PathVariable long id){
         memoryBookService.delBook(id);
     }
+
+    @PostMapping("/")
+    public void addBook(@RequestBody Book book){
+        String isbn = book.getIsbn();
+        String title = book.getTitle();
+        String publisher = book.getPublisher();
+        String type = book.getType();
+        String author = book.getAuthor();
+        memoryBookService.addBook(isbn, title, author, publisher, type);
+    }
 }
 
