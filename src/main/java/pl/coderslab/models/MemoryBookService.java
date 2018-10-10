@@ -20,7 +20,6 @@ public class MemoryBookService {
     }
 
     public List<Book> getList() {
-
         return list;
     }
 
@@ -47,7 +46,7 @@ public class MemoryBookService {
 
     public void addBook(String isbn, String title, String author, String publisher, String type){
         Book book = new Book();
-        book.setId(Book.getFIRST_ID_AVAILABLE());
+        book.setId(Book.getFirstIdAvailable());
         book.setIsbn(isbn);
         book.setTitle(title);
         book.setAuthor(author);

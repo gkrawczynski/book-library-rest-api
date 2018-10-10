@@ -10,13 +10,7 @@ public class Book {
     private String publisher;
     private String type;
 
-    public static long getFIRST_ID_AVAILABLE() {
-        return FIRST_ID_AVAILABLE++;
-    }
-
-    public Book() {
-        this.id = getId();
-    }
+    public Book(){}
 
     public Book(long id, String isbn, String title, String author, String publisher, String type) {
         this.id = id;
@@ -25,6 +19,14 @@ public class Book {
         this.author = author;
         this.publisher = publisher;
         this.type = type;
+    }
+
+    public static long getFirstIdAvailable() {
+        return FIRST_ID_AVAILABLE++;
+    }
+
+    public static void setFirstIdAvailable(long firstIdAvailable) {
+        FIRST_ID_AVAILABLE = firstIdAvailable;
     }
 
     public long getId() {

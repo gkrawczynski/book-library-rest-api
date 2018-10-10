@@ -1,6 +1,8 @@
 package pl.coderslab.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.coderslab.models.Book;
@@ -24,11 +26,16 @@ public class BookController {
         return new Book(1L,"9788324631766","Thinking in Java","Bruce Eckel","Helion","programming");
     }
 
-    @RequestMapping("/booksList")
+    @RequestMapping("/")
     public List<Book> booksList(){
         List<Book> booksList = memoryBookService.getList();
         return booksList;
     }
 
+    @GetMapping("{id}")
+    public Book getBook (@PathVariable long id){
+        Book book = memoryBookService.getById(id);
+        return book;
+    }
 }
 
