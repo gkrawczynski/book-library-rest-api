@@ -49,5 +49,15 @@ public class BookController {
         String author = book.getAuthor();
         memoryBookService.addBook(isbn, title, author, publisher, type);
     }
+
+    @PutMapping("/{id}")
+    public void editBook(@PathVariable long id, @RequestBody Book book){
+        Book bookEdit = memoryBookService.getById(id);
+        bookEdit.setTitle(book.getIsbn());
+        bookEdit.setTitle(book.getTitle());
+        bookEdit.setTitle(book.getAuthor());
+        bookEdit.setTitle(book.getPublisher());
+        bookEdit.setTitle(book.getType());
+    }
 }
 
